@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+::ng-deep .property-key {
+  height: fit-content;
+  width: auto;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+::ng-deep .property-key {
+  background: var(--sapBaseColor);
+}
+
+::ng-deep .property-key-value {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-gap: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  width: fit-content;
+}
+
+::ng-deep .header.controls{
+  background: linear-gradient(
+    90deg,
+    var(--sapBaseColor) 0%,
+    rgba(0,0,0,0) 100%
+  );
+}

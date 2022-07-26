@@ -1,0 +1,15 @@
+select {
+  background-color: var(--sapField_Background) !important;
+  color: inherit;
+  border: 0;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+:host {
+  display: grid;
+  grid-template-columns: minmax(200px, auto) auto 1fr;
+  align-items: center;
+}

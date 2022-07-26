@@ -1,0 +1,161 @@
+<div class="table-loading-indicator-overlay" *ngIf="showLoadingIndicator">
+  <div class="fd-busy-indicator--m" aria-hidden="false" aria-label="Loading">
+    <div class="fd-busy-indicator--circle-0"></div>
+    <div class="fd-busy-indicator--circle-1"></div>
+    <div class="fd-busy-indicator--circle-2"></div>
+  </div>
+</div>
+<div class="table-body" #tableBody>
+  <ng-container *ngTemplateOutlet="tableBodyTemplate"></ng-container>
+</div>
+<div class="table-footer" #tableFooter>
+  <div class="table-footer-header">
+    <ng-content select="[tableFooterHeader]"></ng-content>
+  </div>
+  <div class="table-footer-body">
+    <ng-container *ngTemplateOutlet="tableFooterTemplate"></ng-container>
+  </div>
+  <div class="table-footer-footer">
+    <ng-content select="[tableFooterFooter]"></ng-content>
+  </div>
+</div>
+
+<ng-template #tableBodyTemplate>
+  <ng-container *ngTemplateOutlet="tableHeaderRowTemplate"></ng-container>
+  <ng-container *ngTemplateOutlet="tableRowsTemplate"></ng-container>
+</ng-template>
+
+<ng-template #tableHeaderRowTemplate>
+  <div class="table-row table-header-row" #tableHeaderRow>
+    <div class="table-cell table-checkbox-cell"
+         *ngIf="selectionConfig?.useSelection"
+         [style.width]="selectionConfig?.columnWidth"
+         [ngClass]="{'table-checkbox-cell-sticky' : selectionConfig.sticky}">
+      <div class="checkbox-input-wrapper">
+        <ng-container *ngIf="selectionConfig.selectionMode === 'multi'">
+          <input #checkbox
+                 [id]="'table-id-' + uuid + '-select-all-checkbox'"
+                 aria-label="checkbox"
+                 type="checkbox"
+                 class="fd-checkbox fd-checkbox--compact"
+                 [attr.checkbox-checked]="totalCheckboxIsChecked"
+                 [attr.checkbox-indeterminate]="totalCheckboxIsIndeterminate"
+                 [checked]="totalCheckboxIsChecked"
+                 [indeterminate]="totalCheckboxIsIndeterminate"
+                 (change)="onHeaderSelectionCheckboxChange(checkbox)">
+          <label class="fd-checkbox__label" [for]="'table-id-' + uuid + '-select-all-checkbox'"></label>
+        </ng-container>
+      </div>
+    </div>
+    <div class="table-cell cell-resize-button-holder"
+         *ngFor="let column of getColumns;"
+         [attr.row-id]="'header'"
+         [attr.column-id]="column.id"
+         [attr.table-header-row-cell]="true"
+         [style.width]="column.width ? column.width : defaultColumnWidth">
+      <span class="cell-text">{{column.caption}}</span>
+      <app-cell-resize-button
+        [column]="column"
+        [tableBody]="tableBody"
+        (onColumnSizeChangeRequest)="onColumnSizeChange($event)"
+      ></app-cell-resize-button>
+      <app-column-controls
+        [sortOrder]="getSorting?.[column.dataField]"
+        [column]="column"
+        (onColumnPositionChangeRequest)="onColumnPositionChange($event)"
+        (onSortChangeRequest)="onSortChange($event)"
+      ></app-column-controls>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tableRowsTemplate>
+  <div class="table-row table-row-hoverable"
+       *ngFor="let row of getRows; let i = index; trackBy:trackByIdValue;"
+       [ngClass]="{'alternation-bg': i % 2 === 0, 'selected': row.selected}"
+       (click)="onTableRowClick($event, row)"
+  >
+    <div class="table-cell table-checkbox-cell"
+         *ngIf="selectionConfig?.useSelection"
+         [style.width]="selectionConfig?.columnWidth"
+         [ngClass]="{'table-checkbox-cell-sticky' : selectionConfig.sticky}">
+      <div class="checkbox-input-wrapper">
+        <input #checkbox
+               aria-label="checkbox"
+               type="checkbox"
+               class="fd-checkbox fd-checkbox--compact"
+               [id]="'table-id-' + uuid + '-row-id-' + row.id + '-select-checkbox'"
+               [checked]="row.selected"
+               (change)="onRowSelectionCheckboxChange(row, checkbox.checked, $event)">
+        <label class="fd-checkbox__label"
+               [for]="'table-id-' + uuid + '-row-id-' + row.id + '-select-checkbox'"
+        ></label>
+      </div>
+    </div>
+    <div class="table-cell"
+         *ngFor="let column of getColumns;"
+         [style.width]="column.width ? column.width : defaultColumnWidth"
+         [attr.column-id]="column.id"
+         [attr.row-id]="row.id">
+      <ng-container
+        *ngTemplateOutlet="column.dynamicCellComponent != null
+        ? cellTemplateResolverTemplate
+        : cellDefaultTextTemplate; context: { row: row, column: column }"
+      ></ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #cellTemplateResolverTemplate let-row="row" let-column="column">
+  <app-cell-template-resolver
+    [tableColumn]="column"
+    [tableRow]="row"
+  ></app-cell-template-resolver>
+</ng-template>
+
+<ng-template #cellDefaultTextTemplate let-row="row" let-column="column">
+  <span class="cell-text">{{row.data[column.dataField]}}</span>
+</ng-template>
+
+<ng-template #tableFooterTemplate>
+  <ng-container *ngIf="pagingConfig.showPagination && page != null">
+    <div>
+      <div class="page-size-selector-wrapper" *ngIf="pagingConfig?.showPageSizeSelector">
+        <select #pageSizeSelector class="fd-input fd-input--compact"
+                (change)="onPageSizeSelectorChange(pageSizeSelector.value)">
+          <ng-container *ngFor="let size of pagingConfig?.pageSizes">
+            <option [selected]="size == page.size">{{size}}</option>
+          </ng-container>
+        </select>
+        <span class="page-size-selector-text"> Всего {{page.itemsCount}}</span>
+      </div>
+    </div>
+
+    <div class="fd-pagination">
+      <nav class="fd-pagination__nav">
+        <a class="fd-pagination__link fd-pagination__link--previous"
+           (click)="previousPageNavButtonClick()"
+           [attr.aria-disabled]="isPreviousPageDisabled"></a>
+        <div class="page-input-of">
+          <input
+            #pageNumberInput
+            [size]="getPageInputElementWidth"
+            type="number"
+            class="fd-input fd-input--compact"
+            [value]="getPageNumber"
+            [min]="1"
+            [max]="page?.pagesCount"
+            (change)="onUserPageNumberInput(pageNumberInput.value)"
+          />
+          <span class="of">из {{page?.pagesCount}}</span>
+        </div>
+        <a class="fd-pagination__link fd-pagination__link--next"
+           (click)="nextPageNavButtonClick()"
+           [attr.aria-disabled]="isNetPageDisabled"></a>
+      </nav>
+    </div>
+  </ng-container>
+</ng-template>
+
+
+

@@ -1,0 +1,18 @@
+<div class="fd-form-item">
+  <input
+    #input
+    [value]="value"
+    class="fd-input fd-input--compact"
+    type="number"
+    [disabled]="value == null"
+    (change)="onInputValueChange(input.value)">
+</div>
+<app-context-menu-control>
+  <app-base-value-control
+    [allowDefineButton]="value == null"
+    [allowDeleteButton]="value != null"
+    (onDefineValueButtonClick)="onDefineValueButtonClick($event)"
+    (onDeleteValueButtonClick)="onDeleteValueButtonClick($event)"
+  ></app-base-value-control>
+  <app-array-element-control *ngIf="isArrayItem"></app-array-element-control>
+</app-context-menu-control>

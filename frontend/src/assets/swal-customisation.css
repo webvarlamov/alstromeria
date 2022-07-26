@@ -1,0 +1,15 @@
+.swal-modal {
+  background-color: var(--sapBackgroundColor);
+}
+
+.swal-modal .swal-title, .swal-modal .swal-text {
+  color: var(--sapTextColor);
+}
+
+.swal-icon--success:after, .swal-icon--success:before {
+  background: var(--sapBackgroundColor);
+}
+
+.swal-icon--success__hide-corners {
+  background-color: unset;
+}

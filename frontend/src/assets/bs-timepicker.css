@@ -1,0 +1,22 @@
+timepicker table {
+  display: flex;
+  justify-content: center;
+}
+
+timepicker a.btn-link {
+  display: flex;
+  justify-content: center;
+}
+
+timepicker .bs-chevron {
+  color: var(--sapActiveColor);
+}
+
+timepicker .bs-timepicker-field {
+  background-color: var(--sapBackgroundColor);
+  color: var(--sapTextColor);
+  border: 0;
+  width: 30px;
+  text-align: center;
+  padding: 5px;
+}

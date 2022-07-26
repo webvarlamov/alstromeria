@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+.fd-form-item {
+  width: 100%;
+}

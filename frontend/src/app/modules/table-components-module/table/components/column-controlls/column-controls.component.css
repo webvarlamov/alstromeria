@@ -1,0 +1,42 @@
+:host-context(.table-cell:hover) {
+  opacity: 1;
+  height: 100%;
+}
+
+:host {
+  display: flex;
+  width: 100%;
+  z-index: 9;
+  position: absolute;
+  background-color: var(--sapBackgroundColor);
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 5px;
+  transition: 0.1s;
+
+  opacity: 0;
+  height: 0;
+}
+
+.control-group span {
+  color: var(--sapTextColor);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.control-group span:hover {
+  color: var(--sapActiveColor);
+}
+
+span.sap-icon {
+  padding: 0 4px !important;
+}
+
+span.sap-icon.active {
+  background-color: var(--sapButton_Track_Background);
+  border-radius: 2px;
+}
+

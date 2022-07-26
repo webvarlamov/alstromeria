@@ -1,0 +1,12 @@
+<button class="fd-button fd-button--icon fd-button--positive fd-button--compact" style="margin-right: 5px; min-width: {{minButtonWidth}};"
+        (click)="acceptButtonClick.emit()"
+        [disabled]="!acceptAllow"
+        *ngIf="acceptShow">
+  <i class="sap-icon--save" *ngIf="showIcons"></i>
+  {{acceptLabel}}</button>
+<button class="fd-button fd-button--icon  fd-button--negative fd-button--compact" style="min-width: {{minButtonWidth}};"
+        (click)="rejectButtonClick.emit()"
+        [disabled]="!rejectAllow"
+        *ngIf="rejectShow">
+  <i class="sap-icon--sys-back" *ngIf="showIcons"></i>
+  {{rejectLabel}}</button>

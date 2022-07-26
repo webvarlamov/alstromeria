@@ -1,0 +1,17 @@
+<div class="fd-input-group">
+  <select class="fd-input fd-input--compact fd-input-group__input"
+          #select
+          (change)="onInputValueChange(select.value)">
+    <option value="" [selected]="value == null"></option>
+    <option value="true" [selected]="value === true">Да</option>
+    <option value="false" [selected]="value === false">Нет</option>
+  </select>
+</div>
+<app-context-menu-control *ngIf="isArrayItem">
+<!--  <app-base-value-control-->
+<!--    [allowDeleteButton]="value != null"-->
+<!--    (onDefineValueButtonClick)="onDefineValueButtonClick($event)"-->
+<!--    (onDeleteValueButtonClick)="onDeleteValueButtonClick($event)"-->
+<!--  ></app-base-value-control>-->
+  <app-array-element-control></app-array-element-control>
+</app-context-menu-control>

@@ -1,0 +1,149 @@
+<div class="header controls" [ngClass]="{'aria-collapsed': !ariaExpanded || value == null}">
+  <button class="fd-button fd-button--transparent is-expanded fd-button--compact"
+          [disabled]="value == null"
+          [attr.aria-expanded]="ariaExpanded"
+          (click)="ariaExpanded = !ariaExpanded">
+    <i [ngClass]="{'sap-icon--slim-arrow-down': !ariaExpanded, 'sap-icon--slim-arrow-up': ariaExpanded}"></i>
+  </button>
+  <span>Список ({{value != null ? value.length : "Не задан"}})</span>
+  <app-context-menu-control>
+    <app-base-value-control
+      [allowDefineButton]="value == null"
+      [allowDeleteButton]="value != null"
+      (onDefineValueButtonClick)="onDefineValueButtonClick($event)"
+      (onDeleteValueButtonClick)="onDeleteValueButtonClick($event)"
+    >
+    </app-base-value-control>
+    <app-array-control
+      (onDeleteAllArrayElementsButtonClick)="onDeleteAllArrayElementsButtonClick($event)"
+    ></app-array-control>
+    <app-array-element-control
+      *ngIf="isArrayItem"></app-array-element-control>
+  </app-context-menu-control>
+</div>
+
+<ng-container *ngIf="ariaExpanded && value != null">
+  <div class="spacer"></div>
+  <ng-container *ngFor="let item of value; let i = index">
+    <div class="property-key-value">
+      <div class="property-key" [title]="i">
+          {{i}}
+      </div>
+      <ng-container *ngIf="typeFinderService.isArray(typeFinderService.getArrayElementType(type))">
+        <app-array-property-view class="property-view"
+                                 [value]="item"
+                                 [key]="i"
+                                 [root]="root"
+                                 [owner]="value"
+                                 [ownerType]="type"
+                                 [path]="path + '.[' + i + ']'"
+                                 [typeFinderService]="typeFinderService"
+                                 [typeGraph]="typeGraph"
+                                 [objectStateType]="objectStateType"
+                                 [type]="typeFinderService.getArrayElementType(type)"
+                                 [enumMembersLocalisation]="enumMembersLocalisation"
+                                 [propertyNameLocalisation]="propertyNameLocalisation"
+                                 [isArrayItem]="true"
+        ></app-array-property-view>
+      </ng-container>
+      <ng-container *ngIf="typeFinderService.isObject(typeFinderService.getArrayElementType(type), typeGraph)">
+        <app-object-property-view class="property-view"
+                                  [value]="item"
+                                  [key]="i"
+                                  [root]="root"
+                                  [owner]="value"
+                                  [ownerType]="type"
+                                  [path]="path + '.[' + i + ']'"
+                                  [typeFinderService]="typeFinderService"
+                                  [typeGraph]="typeGraph"
+                                  [objectStateType]="objectStateType"
+                                  [type]="typeFinderService.getArrayElementType(type)"
+                                  [enumMembersLocalisation]="enumMembersLocalisation"
+                                  [propertyNameLocalisation]="propertyNameLocalisation"
+                                  [isArrayItem]="true"
+        ></app-object-property-view>
+      </ng-container>
+      <ng-container *ngIf="typeFinderService.isNumber(typeFinderService.getArrayElementType(type))">
+        <app-number-property-view class="property-view"
+                                  [value]="item"
+                                  [key]="i"
+                                  [root]="root"
+                                  [owner]="value"
+                                  [ownerType]="type"
+                                  [path]="path + '.[' + i + ']'"
+                                  [typeFinderService]="typeFinderService"
+                                  [type]="typeFinderService.getArrayElementType(type)"
+                                  [propertyNameLocalisation]="propertyNameLocalisation"
+                                  [isArrayItem]="true"
+        ></app-number-property-view>
+      </ng-container>
+      <ng-container *ngIf="typeFinderService.isString(typeFinderService.getArrayElementType(type))">
+        <app-string-property-view class="property-view"
+                                  [value]="item"
+                                  [key]="i"
+                                  [root]="root"
+                                  [owner]="value"
+                                  [ownerType]="type"
+                                  [path]="path + '.[' + i + ']'"
+                                  [typeFinderService]="typeFinderService"
+                                  [type]="typeFinderService.getArrayElementType(type)"
+                                  [propertyNameLocalisation]="propertyNameLocalisation"
+                                  [isArrayItem]="true"
+        ></app-string-property-view>
+      </ng-container>
+      <ng-container *ngIf="typeFinderService.isBoolean(typeFinderService.getArrayElementType(type))">
+        <app-boolean-property-view class="property-view"
+                                   [value]="item"
+                                   [key]="i"
+                                   [root]="root"
+                                   [owner]="value"
+                                   [ownerType]="type"
+                                   [path]="path + '.[' + i + ']'"
+                                   [typeFinderService]="typeFinderService"
+                                   [type]="typeFinderService.getArrayElementType(type)"
+                                   [propertyNameLocalisation]="propertyNameLocalisation"
+                                   [isArrayItem]="true"
+        ></app-boolean-property-view>
+      </ng-container>
+      <ng-container *ngIf="typeFinderService.isAny(typeFinderService.getArrayElementType(type))">
+        <app-any-property-view class="property-value"
+                               [value]="item"
+                               [key]="i"
+                               [root]="root"
+                               [owner]="value"
+                               [ownerType]="type"
+                               [path]="path + '.[' + i + ']'"
+                               [typeFinderService]="typeFinderService"
+                               [type]="typeFinderService.getArrayElementType(type)"
+                               [propertyNameLocalisation]="propertyNameLocalisation"
+                               [isArrayItem]="true"
+        ></app-any-property-view>
+      </ng-container>
+      <ng-container *ngIf="typeFinderService.isEnum(typeFinderService.getArrayElementType(type))">
+        <app-enum-property-view class="property-value"
+                                [value]="item"
+                                [key]="i"
+                                [root]="root"
+                                [owner]="value"
+                                [ownerType]="type"
+                                [path]="path + '.[' + i + ']'"
+                                [typeFinderService]="typeFinderService"
+                                [typeGraph]="typeGraph"
+                                [type]="typeFinderService.getArrayElementType(type)"
+                                [enumMembersLocalisation]="enumMembersLocalisation"
+                                [propertyNameLocalisation]="propertyNameLocalisation"
+                                [isArrayItem]="true"
+        ></app-enum-property-view>
+      </ng-container>
+    </div>
+  </ng-container>
+  <div class="footer controls">
+    <ng-container *ngIf="value != null">
+      <button aria-label="Accept" class="fd-button fd-button--transparent fd-button--compact fd-button--positive"
+              (click)="onAddArrayElementButtonClick()">
+        <i class="sap-icon--add"></i>
+        <span>Добавить</span>
+      </button>
+    </ng-container>
+  </div>
+</ng-container>

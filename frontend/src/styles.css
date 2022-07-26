@@ -1,0 +1,67 @@
+@import "assets/fonts.css";
+@import "assets/fundamental-styles.css";
+@import "assets/reset.css";
+@import "assets/common.css";
+
+@import "assets/themes/light-dark/css_variables.css";
+@import "assets/themes/quartz-dark/css_variables.css";
+@import "assets/themes/hight-contrast/css_variables.css";
+
+@import "assets/dx-customisation.css";
+@import "assets/swal-customisation.css";
+@import "assets/bs-datepicker.css";
+@import "assets/bs-timepicker.css";
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(136, 136, 136, 0.4);
+}
+
+hr {
+  border-color: var(--sapList_BorderColor)
+}
+
+fieldset {
+  border-color: var(--sapHighlightColor);
+  border-width: 1px;
+}
+
+.vertical-spacer-15 {
+  display: block;
+  width: 100%;
+  height: 15px;
+}
+
+.horizontal-spacer-15 {
+  display: block;
+  height: 100%;
+  width: 15px;
+}
+
+.vertical-spacer-5 {
+  display: block;
+  width: 100%;
+  height: 5px;
+}
+
+.vertical-spacer-10 {
+  display: block;
+  width: 100%;
+  height: 5px;
+}
+
+.vertical-spacer-20 {
+  display: block;
+  width: 100%;
+  height: 5px;
+}
+

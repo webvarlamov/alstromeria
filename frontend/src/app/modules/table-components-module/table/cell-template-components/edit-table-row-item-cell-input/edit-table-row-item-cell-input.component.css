@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  padding: 0 3px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+div.fd-form-item {
+  flex-grow: 1;
+}
+
+div.fd-form-item .fd-input--compact {
+  margin-top: 4px;
+}

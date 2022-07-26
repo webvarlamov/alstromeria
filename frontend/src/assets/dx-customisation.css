@@ -1,0 +1,214 @@
+.dx-loadindicator-icon .dx-loadindicator-segment {
+  background-color: var(--sapBrandColor);
+}
+
+.dx-widget {
+  font-family: unset;
+}
+
+.dx-datagrid .dx-row > td {
+  padding: 5px;
+}
+
+.dx-pager .dx-page-sizes .dx-page-size {
+  padding: 4px 6px 5px 7px;
+}
+
+.dx-pager .dx-pages .dx-page {
+  padding: 4px 6px 5px;
+}
+
+.dx-datagrid .dx-column-lines > td:first-child {
+  border-left: unset;
+}
+
+.dx-datagrid {
+  color: var(--sapTextColor);
+  background-color: var(--sapList_Background);
+}
+
+.dx-datagrid .dx-row-alt > td, .dx-datagrid .dx-row-alt > tr > td {
+  background-color: var(--sapBackgroundColor);
+  border-top: 1px solid var(--sapList_BorderColor);
+  border-bottom: 1px solid var(--sapList_BorderColor);
+}
+
+tr.dx-row.dx-column-lines.dx-header-row {
+  background-color: var(--sapBackgroundColor);
+  color: var(--sapTextColor);
+}
+
+.dx-datagrid .dx-column-lines > td {
+  border-left: 1px solid var(--sapList_BorderColor);
+  border-right: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-datagrid-borders > .dx-datagrid-filter-panel, .dx-datagrid-borders > .dx-datagrid-headers, .dx-datagrid-borders > .dx-datagrid-pager {
+  border-top: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-datagrid-borders > .dx-datagrid-headers, .dx-datagrid-borders > .dx-datagrid-rowsview, .dx-datagrid-borders > .dx-datagrid-total-footer {
+  border-left: 1px solid var(--sapList_BorderColor);
+  border-right: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-datagrid-headers {
+  border-bottom: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-datagrid-borders .dx-datagrid-rowsview, .dx-datagrid-headers + .dx-datagrid-rowsview {
+  border-top: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-datagrid-borders > .dx-datagrid-rowsview, .dx-datagrid-borders > .dx-datagrid-total-footer {
+  border-bottom: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-datagrid-headers .dx-datagrid-table .dx-row > td {
+  border-bottom: 1px solid var(--sapList_BorderColor);
+  border-bottom-color: var(--sapList_BorderColor);
+}
+
+.dx-pager .dx-page-sizes .dx-selection, .dx-pager .dx-pages .dx-selection {
+  cursor: inherit;
+  text-shadow: none;
+  color: var(--sapButton_Selected_TextColor);;
+  border-color: transparent;
+  background-color: var(--sapButton_Active_Background,#0854a0);
+}
+
+.dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover>td.dx-focused, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover>tr>td.dx-focused, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused)>td.dx-focused, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused)>tr>td.dx-focused {
+  background-color: var(--sapList_SelectionBackgroundColor);
+  color: var(--sapTextColor);
+}
+
+.dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
+  background-color: var(--sapList_SelectionBackgroundColor);
+  color: var(--sapTextColor);
+}
+
+.dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused).dx-column-lines > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused).dx-column-lines > tr > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover.dx-column-lines > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover.dx-column-lines > tr > td {
+  /*border-left-color: var(--sapList_SelectionBorderColor);*/
+  /*border-right-color: var(--sapList_SelectionBorderColor);*/
+
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover:not(.dx-row-lines) > td, .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):not(.dx-row-lines) > td {
+  border-bottom: 1px solid var(--sapList_SelectionBorderColor);
+  /*border-top: 1px solid var(--sapList_SelectionBorderColor);*/
+
+  /*border-bottom: transparent;*/
+  border-top: transparent;
+}
+
+.dx-checkbox-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+  border: 1px solid var(--sapSelectedColor);
+  background-color: transparent;
+}
+
+.dx-checkbox.dx-state-readonly .dx-checkbox-icon {
+  border-color: var(--sapSelectedColor);
+  background-color: transparent;
+}
+
+.dx-checkbox-checked .dx-checkbox-icon {
+  font: 16px/16px DXIcons;
+  color: var(--sapSelectedColor);
+  text-align: center;
+}
+
+.dx-loadpanel-content {
+  border: 1px solid var(--sapList_BorderColor);;
+  background-color: var(--sapBackgroundColor);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.25);
+  box-shadow: 0 6px 12px rgba(0,0,0,.25);
+}
+
+
+/*DxPopoverComponent*/
+
+.dx-popup-wrapper > .dx-overlay-content {
+  background: var(--sapBackgroundColor);
+}
+
+.dx-popup-title {
+  color: var(--sapTextColor);
+}
+
+.dx-button-mode-contained .dx-icon {
+  color: var(--sapTextColor);
+}
+
+.dx-overlay-shader {
+  background-color: rgb(0 0 0 / 46%);;
+}
+
+.dx-popup-wrapper > .dx-overlay-content {
+  border: unset !important;
+}
+
+.dx-popup-title {
+  border-bottom: 1px solid var(--sapList_BorderColor);
+}
+
+/*dx-tree-list*/
+.dx-treelist-container {
+  background-color: var(--sapList_Background);
+  color: var(--sapTextColor);
+}
+
+.dx-treelist .dx-row-alt > td, .dx-treelist .dx-row-alt > tr > td {
+  background-color: var(--sapBackgroundColor);
+  border-top: 1px solid var(--sapList_BorderColor);
+  border-bottom: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td,
+.dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td,
+.dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td,
+.dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
+  background-color: var(--sapList_SelectionBackgroundColor);
+  color: var(--sapTextColor);
+}
+
+.dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):not(.dx-row-lines) > td {
+  border-bottom: 1px solid var(--sapList_SelectionBorderColor);
+  border-top: 1px solid transparent;
+}
+
+.dx-treelist-headers .dx-treelist-table .dx-row > td {
+  border-bottom: unset;
+}
+
+.dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover:not(.dx-row-lines) > td, .dx-treelist-rowsview .dx-selection.dx-row:not(.dx-row-focused):not(.dx-row-lines) > td {
+   border-bottom: 1px solid var(--sapList_SelectionBorderColor);
+   border-top: unset;
+}
+
+.dx-treelist-headers + .dx-treelist-rowsview {
+  border-top: 1px solid var(--sapList_BorderColor);
+}
+
+.dx-treelist .dx-column-lines>td {
+  /* border-left: 1px solid #d82121; */
+  border-right: 1px solid var(--sapList_BorderColor);
+}
+
+/*Master details*/
+.dx-datagrid-rowsview .dx-master-detail-row:not(.dx-datagrid-edit-form) .dx-master-detail-cell, .dx-datagrid-rowsview .dx-master-detail-row:not(.dx-datagrid-edit-form) > .dx-datagrid-group-space {
+  background-color: var(--sapBackgroundColor);
+}
+
+.dx-datagrid-rowsview .dx-master-detail-row .dx-master-detail-cell, .dx-datagrid-rowsview .dx-master-detail-row > .dx-datagrid-group-space {
+  border-top: 1px solid var(--sapList_BorderColor);
+  border-bottom: 1px solid var(--sapList_BorderColor);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--sapList_BorderColor);
+}

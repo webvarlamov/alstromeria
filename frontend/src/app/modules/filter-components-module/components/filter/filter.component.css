@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+div.filter-content-wrapper {
+  display: flex;
+  align-items: end;
+}

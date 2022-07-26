@@ -1,0 +1,8 @@
+<div class="fd-form-item">
+  <input class="fd-input fd-input--compact"
+         [attr.previous-value]="value$ | async"
+         #inputElement
+         [value]="value$ | async"
+         (change)="onInputValueChange(inputElement, $event)"
+  >
+</div>

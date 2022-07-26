@@ -1,0 +1,24 @@
+fieldset {
+  margin: 5px 15px 20px 15px;
+}
+
+.legend-item {
+  transform: scale(0.8) translate(0px, 1px);
+}
+
+fieldset.collapsed .fieldset-content {
+  max-height: 0;
+  transition: 0.2s;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0;
+}
+
+fieldset .fieldset-content {
+  max-height: 1000px;
+  transition: 0.2s;
+}
+
+i.sap-icon--collapse-group.collapsed {
+  transform: rotate(180deg);
+}

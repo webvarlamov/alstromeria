@@ -1,0 +1,12 @@
+<fieldset [ngClass]="{'collapsed': collapsed }">
+  <legend>
+    <button class="fd-button fd-button--compact" style="transform: scale(0.8);"
+            (click)="onFieldsetCollapseExpandButtonClick()">
+      <i class="sap-icon--collapse-group" [ngClass]="{'collapsed': collapsed }"></i>
+    </button>
+    <span>{{legend}}</span>
+  </legend>
+  <div class="fieldset-content">
+    <ng-content></ng-content>
+  </div>
+</fieldset>

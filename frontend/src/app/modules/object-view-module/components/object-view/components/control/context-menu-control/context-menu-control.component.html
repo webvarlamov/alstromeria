@@ -1,0 +1,12 @@
+<div class="fd-popover">
+  <div class="fd-popover__control">
+    <button
+      (click)="onUserContextMenuCall($event)"
+      class="fd-button fd-button--transparent fd-button--compact">
+      <i class="sap-icon--menu2"></i>
+    </button>
+  </div>
+  <div class="fd-popover__body" [attr.aria-hidden]="!(showControlsContextMenu$ | async)">
+    <ng-content></ng-content>
+  </div>
+</div>

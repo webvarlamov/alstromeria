@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  border-left: 1px solid var(--sapAccentColor6);
+  width: 100%;
+}
+
+.header.controls {
+  grid-template-columns: 30px 130px 30px;
+  display: grid;
+  padding: 5px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header.controls.aria-collapsed {
+  min-height: 100%;
+}
+
+.state-control-button {
+  opacity: 0.1;
+  filter: grayscale(1);
+}
+
+.state-control-button:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.spacer {
+  height: 5px;
+}

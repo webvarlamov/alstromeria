@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 5px;
+  background-color: var(--sapActiveColor);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: col-resize;
+  margin-right: -3px;
+  z-index: 10;
+}
+
+:host:hover {
+  opacity: 0.2;
+}

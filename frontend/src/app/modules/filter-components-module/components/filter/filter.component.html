@@ -1,0 +1,29 @@
+<div class="filter-content-wrapper">
+  <ng-content select="[filterInput]"></ng-content>
+  <span class="fd-input-group__addon fd-input-group__addon--button">
+    <button
+      aria-label="show options"
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="fd-input-group__button fd-button fd-button--transparent"
+      (click)="onMasterInputButtonClick()">
+      <i class="sap-icon--value-help"></i>
+    </button>
+  </span>
+</div>
+
+
+<app-modal-window [id]="'master-input-id'"
+                  *ngIf="showMasterInput"
+                  style="z-index: 100"
+                  [baseHeight]="'800px'"
+                  [baseWidth]="'1200px'"
+                  [minWidth]="'700px'"
+                  [minHeight]="'450px'"
+                  (decline)="onMasterInputDecline()"
+                  [headerTitle]="'Детальная настройка значения фильтра'"
+>
+  <div modalWindowBody >
+    <ng-content select="[filterDetails]"></ng-content>
+  </div>
+</app-modal-window>

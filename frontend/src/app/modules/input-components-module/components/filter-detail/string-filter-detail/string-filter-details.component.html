@@ -1,0 +1,11 @@
+<fieldset>
+  <legend>Просмотр обьекта фильтрации:</legend>
+  <app-object-view
+    [objectState]="objectState"
+    [typeGraph]="typeGraph"
+    [propertyNameLocalisation]="propertyNameLocalisation"
+    [enumMembersLocalisation]="enumMembersLocalisation"
+    [objectStateType]="rootObjectTypeName"
+    (onObjectStateChangeRequest)="onObjectStateChangeRequestEvent($event)"
+  ></app-object-view>
+</fieldset>

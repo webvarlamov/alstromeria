@@ -1,0 +1,170 @@
+:host {
+  position: relative;
+}
+
+.table-body {
+  display: flex;
+  overflow: auto;
+  flex-basis: 200px;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.table-row {
+  display: flex;
+  min-width: 100%;
+  width: max-content;
+  border-bottom: 1px solid var(--sapList_BorderColor);
+  min-height: 35px;
+}
+
+.table-row-hoverable:hover, .table-row-hoverable:hover .table-checkbox-cell {
+  background-color: var(--sapList_SelectionBackgroundColor);
+}
+
+.table-row.selected {
+  border-bottom: 1px solid var(--sapList_SelectionBorderColor);
+  background-color: var(--sapList_SelectionBackgroundColor) !important;
+}
+
+.table-row.selected .table-checkbox-cell {
+  background-color: var(--sapList_SelectionBackgroundColor) !important;
+}
+
+.table-cell {
+  border-right: 1px solid var(--sapList_BorderColor);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.table-cell .cell-text {
+  padding: 8px;
+  box-sizing: border-box;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+
+.cell-resize-button-holder {
+  position: relative;
+}
+
+.table-checkbox-cell-sticky {
+  position: sticky;
+  left: 0;
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.table-checkbox-cell {
+  background-color: var(--sapBackgroundColor);
+}
+
+.table-header-row {
+  position: sticky;
+  background-color: var(--sapBackgroundColor);
+  top: 0;
+  z-index: 1;
+}
+
+.table-footer {
+  border-top: 1px solid var(--sapList_BorderColor);
+}
+
+.table-footer .table-footer-body {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+:host {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.alternation-bg {
+  background-color: var(--sapField_Background);
+}
+
+.checkbox-element {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-element .checkbox-wrapper label {
+  padding: 0;
+}
+
+.fd-checkbox:indeterminate + .fd-checkbox__label:before {
+  padding-top: 0;
+}
+
+.fd-checkbox__label {
+  outline-color: transparent !important;
+  width: 100%;
+  padding: 0 !important;
+}
+
+nav.fd-pagination__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.page-input-of {
+  display: flex;
+}
+
+div.page-input-of span.of {
+  display: flex;
+  white-space: nowrap;
+  margin: 0 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+div.page-number-input-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.page-size-selector-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+span.page-size-selector-text {
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+}
+
+div.table-loading-indicator-overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  min-height: 0;
+  min-width: 0;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+}
+
+div.table-loading-indicator-overlay .fd-busy-indicator--m{
+  opacity: 0.7 !important;
+}

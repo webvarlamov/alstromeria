@@ -1,0 +1,107 @@
+<div class="section action-bar">
+  <div class="section-content">
+    <app-crud-toolbar
+      (onDeleteButtonClick)="onDeleteItemsRequest()"
+    ></app-crud-toolbar>
+  </div>
+</div>
+<div class="section filter-bar">
+  <div class="section-content">
+    <app-fieldset [legend]="'Список фильтров'">
+      <div class='fd-container'>
+        <div class='fd-row'>
+          <div class='fd-col fd-col--12 fd-col-md--6 fd-col-lg--4 fd-col-xl--3'>
+            <app-filter>
+              <app-entity-input filterInput>
+                <app-input-suggestion></app-input-suggestion>
+              </app-entity-input>
+              <app-entity-filter-detail
+                filterDetails
+                (onFilterDetailChangeRequestEvent)="listViewFilterDetailEventManager.onFilterDetailsEvent($event)"
+              ></app-entity-filter-detail>
+            </app-filter>
+          </div>
+
+          <div class='fd-col fd-col--12 fd-col-md--6 fd-col-lg--4 fd-col-xl--3'>
+            <app-filter>
+              <app-boolean-input filterInput>
+                <app-input-suggestion></app-input-suggestion>
+              </app-boolean-input>
+            </app-filter>
+          </div>
+
+          <div class='fd-col fd-col--12 fd-col-md--6 fd-col-lg--4 fd-col-xl--3'>
+            <app-filter>
+              <app-string-input filterInput>
+                <app-input-suggestion></app-input-suggestion>
+              </app-string-input>
+              <app-string-filter-details
+                filterDetails
+                [filterDetailState]="(listViewFiltersState.filterValuesByAttributeKey$ | async).description"
+                (onFilterDetailChangeRequestEvent)="listViewFilterDetailEventManager.onFilterDetailsEvent($event)">
+              </app-string-filter-details>
+            </app-filter>
+          </div>
+
+          <div class='fd-col fd-col--12 fd-col-md--6 fd-col-lg--4 fd-col-xl--3'>
+            <app-filter>
+              <app-number-input filterInput [label]="'name'">
+                <app-input-suggestion></app-input-suggestion>
+              </app-number-input>
+              <app-string-filter-details
+                [attributeKey]="'name'"
+                filterDetails
+                [filterDetailState]="(listViewFiltersState.filterValuesByAttributeKey$ | async).name"
+                (onFilterDetailChangeRequestEvent)="listViewFilterDetailEventManager.onFilterDetailsEvent($event)"
+              ></app-string-filter-details>
+            </app-filter>
+          </div>
+
+          <div class='fd-col fd-col--12 fd-col-md--6 fd-col-lg--4 fd-col-xl--3'>
+            <app-filter>
+              <app-enum-input filterInput [label]="'Энам инпут'">
+                <app-input-suggestion></app-input-suggestion>
+              </app-enum-input>
+            </app-filter>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="section-content">
+        <app-accept-reject-buttons></app-accept-reject-buttons>
+      </div>
+    </app-fieldset>
+  </div>
+</div>
+<div class="section table-wrapper">
+  <app-table
+    [id]="'plan-list-data-grid'"
+    [selectionConfig]="tableSelectionConfig"
+    [sorting]="this.listViewTableState.tableSorting$ | async"
+    [items]="this.listViewTableState.tableItemsList$ | async"
+    [columns]="this.listViewTableState.tableColumns$ | async"
+    [selectedEntities]="this.listViewTableState.tableSelectedList$ | async"
+    [page]="this.listViewTableState.tablePage$ | async"
+    [showLoadingIndicator]="this.listViewTableState.tableShowLoaderIndicator$ | async"
+    (onPageNumberChangeRequest)="this.listViewStateManager.onPageNumberChangeRequest($event)"
+    (onColumnSizeChangeRequest)="this.listViewStateManager.onColumnSizeChangeRequest($event)"
+    (onSelectionChangeRequest)="this.listViewStateManager.onTableSelectionChangeRequest($event)"
+    (onColumnPositionChangeRequest)="this.listViewStateManager.onColumnMoveChangeRequest($event)"
+    (onSortChangeRequest)="this.listViewStateManager.onSortChangeRequest($event)"
+    (onPageSizeChangeRequest)="this.listViewStateManager.onPageSizeChangeRequest($event)">
+  </app-table>
+</div>
+<!--<app-modal-window [id]="'lala-input-id'"-->
+<!--                  *ngIf="true"-->
+<!--                  style="z-index: 100"-->
+<!--                  [baseHeight]="'800px'"-->
+<!--                  [baseWidth]="'1200px'"-->
+<!--                  [minWidth]="'700px'"-->
+<!--                  [minHeight]="'450px'"-->
+<!--                  [headerTitle]="'Детальная настройка значения фильтра'"-->
+<!--&gt;-->
+<!--  <div modalWindowBody >-->
+<!--    <app-filter-expression-builder></app-filter-expression-builder>-->
+<!--  </div>-->
+<!--</app-modal-window>-->
+

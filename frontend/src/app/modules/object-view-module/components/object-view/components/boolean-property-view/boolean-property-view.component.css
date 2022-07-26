@@ -1,0 +1,29 @@
+:host {
+  display: grid;
+  grid-template-columns: minmax(200px, auto) auto 1fr;
+  align-items: center;
+}
+
+select {
+  background-color: var(--sapField_Background) !important;
+  color: inherit;
+  border: 0;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+option {
+  font-family: "72", "72full", Arial, Helvetica, sans-serif !important;
+}
+
+.fd-checkbox__label:before {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.fd-checkbox__label {
+  outline-color: transparent !important;
+  width: 100%;
+}

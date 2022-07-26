@@ -1,5 +1,4 @@
-import {Directive, ElementRef, EventEmitter, Inject, Injectable, Input, OnInit, Output} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {Directive, Injectable, OnInit} from '@angular/core';
 
 export class DetailViewConfig {
 }

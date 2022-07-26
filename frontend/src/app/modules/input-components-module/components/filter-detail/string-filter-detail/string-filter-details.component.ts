@@ -1,12 +1,10 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {TypeGraph} from "../../../../object-view-module/components/object-view/model/type.graph";
+import {FilterDetailComponent} from "../common/filter-detail-component";
 import {
-  NumberFilterComponentRangeOperatorType,
+  FilterComponentValueUnionOperator,
   StringFilterComponentRangeOperatorType
 } from "../../../../filter-components-module/models/filter-component-value";
-import {BasicFilterExpressionBuilderTypeGraph} from "../config/filter-expression-object-view.config";
-import {FilterDetailComponent} from "../common/filter-detail-component";
-import {StringFilterComponentValueImpl} from "../../../../filter-components-module/models/filter-component-value-basic-impl";
 
 @Component({
   selector: 'app-string-filter-details',
@@ -29,26 +27,10 @@ export class StringFilterDetailsComponent extends FilterDetailComponent implemen
       operator: 'Enum<RangeOperator>',
       value1: 'string',
       value2: 'string',
-      values: 'string'
+      values: 'Array<string>'
     },
-    "FilterExpressionOperator": {
-      AND: 'AND',
-      OR: 'OR'
-    },
-    "RangeOperator": {
-      EQ: 'EQ',
-      NE: 'NE',
-      LE: 'LE',
-      GE: 'GE',
-      LT: 'LT',
-      GT: 'GT',
-      IN: 'IN',
-      BT: 'BT',
-      LIKE: 'LIKE',
-      ISMEMBER: 'ISMEMBER',
-      STARTWITH: 'STARTWITH',
-      ENDWITH: 'ENDWITH'
-    }
+    "FilterExpressionOperator": {...FilterComponentValueUnionOperator},
+    "RangeOperator": {...StringFilterComponentRangeOperatorType}
   };
   public rootObjectTypeName: string = "Value";
 

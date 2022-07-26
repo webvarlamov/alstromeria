@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input, OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {DEFAULT_COLUMN_WIDTH} from "../../table.component";
 import {fromEvent, Observable, Subscription} from "rxjs";
 import {map, switchMap, takeUntil, tap} from "rxjs/operators";

@@ -1,30 +1,15 @@
-import {
-  PagingAndSortingRemoteRepositoryImpl
-} from "../service/http/repository/paging-and-sorting-remote-repository-impl";
+import {PagingAndSortingRemoteRepositoryImpl} from "../service/http/repository/paging-and-sorting-remote-repository-impl";
 import {HasId} from "../service/http/model/pageable";
 import {combineLatest, Observable, of} from "rxjs";
-import {map, switchMap, take, tap} from "rxjs/operators";
-import {
-  ColumnPositionChangeRequest
-} from "../modules/table-components-module/table/models/changeRequest/column-position-change.request";
-import {
-  ColumnSizeChangeRequest
-} from "../modules/table-components-module/table/components/cell-resize/cell-resize.component";
+import {switchMap, take, tap} from "rxjs/operators";
+import {ColumnPositionChangeRequest} from "../modules/table-components-module/table/models/changeRequest/column-position-change.request";
+import {ColumnSizeChangeRequest} from "../modules/table-components-module/table/components/cell-resize/cell-resize.component";
 import {SortChangeRequest} from "../modules/table-components-module/table/models/changeRequest/sort-change-request";
-import {
-  SelectionChangeRequest
-} from "../modules/table-components-module/table/models/changeRequest/selectionChangeRequest";
-import {
-  PageSizeChangeRequest
-} from "../modules/table-components-module/table/models/changeRequest/pageSizeChangeRequest";
-import {
-  PageNumberChangeRequest
-} from "../modules/table-components-module/table/models/changeRequest/pageNumberChangeRequest";
+import {SelectionChangeRequest} from "../modules/table-components-module/table/models/changeRequest/selectionChangeRequest";
+import {PageSizeChangeRequest} from "../modules/table-components-module/table/models/changeRequest/pageSizeChangeRequest";
+import {PageNumberChangeRequest} from "../modules/table-components-module/table/models/changeRequest/pageNumberChangeRequest";
 import {ListViewTableStateManager} from "../state/list-view-state/list-view-table-state-manager-impl";
-import {
-  ListViewFiltersStateData,
-  ListViewFiltersStateManager
-} from "../state/filter-state/list-view-filters-state-manager-impl";
+import {ListViewFiltersStateData, ListViewFiltersStateManager} from "../state/filter-state/list-view-filters-state-manager-impl";
 import {FilterExpression} from "../service/http/model/filter-expression";
 
 export class PagingAndSortingRemoteRepositoryListViewStateManagerImpl<T extends HasId> implements ListViewStateManager {

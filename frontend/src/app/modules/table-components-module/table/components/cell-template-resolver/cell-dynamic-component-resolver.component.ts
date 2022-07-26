@@ -1,10 +1,16 @@
 import {
   ChangeDetectionStrategy,
-  Component, ComponentFactory,
-  ComponentFactoryResolver, ComponentRef, Injector,
-  Input, OnChanges,
-  OnInit, SimpleChanges,
-  ViewContainerRef, ViewRef
+  Component,
+  ComponentFactory,
+  ComponentFactoryResolver,
+  ComponentRef,
+  Injector,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewContainerRef,
+  ViewRef
 } from '@angular/core';
 import {TableRow} from "../../models/dataModels/tableRow";
 import {TableColumn} from "../../models/dataModels/tableColumn";

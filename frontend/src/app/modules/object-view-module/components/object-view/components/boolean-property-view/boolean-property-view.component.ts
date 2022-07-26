@@ -1,11 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {PropertyValueView} from "../property-view/property-value-view.directive";
-import {
-  CommonRequestImpl,
-  RequestMetaInfImpl,
-  RequestOwnerStateImpl, RequestPurpose,
-  RequestSubjectStateImpl
-} from "../../model/common.request";
+import {CommonRequestImpl, RequestMetaInfImpl, RequestOwnerStateImpl, RequestPurpose, RequestSubjectStateImpl} from "../../model/common.request";
 import {RequestType} from "../../model/request.type";
 
 @Component({

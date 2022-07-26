@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StoryListViewComponent } from './story-list-view.component';
+import {StoryListViewComponent} from './story-list-view.component';
 
 describe('StoryListViewComponent', () => {
   let component: StoryListViewComponent;

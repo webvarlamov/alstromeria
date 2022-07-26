@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RangeOperator} from "../../../../service/http/model/range-operator.enum";
 
 @Component({

@@ -1,6 +1,6 @@
 import {ListViewTableState} from "./list-view-table-state";
 import {take, tap} from "rxjs/operators";
-import {combineLatest, Observable, of, throwError} from "rxjs";
+import {combineLatest, Observable} from "rxjs";
 import {HasId} from "../../service/http/model/pageable";
 import {Page} from "../../service/http/model/page";
 import {TableSort} from "../../modules/table-components-module/table/models/dataModels/tableSort";

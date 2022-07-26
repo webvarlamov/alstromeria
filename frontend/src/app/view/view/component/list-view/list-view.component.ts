@@ -1,23 +1,15 @@
 import {Directive, Injector, OnInit} from "@angular/core";
-import {
-  ColumnPositionChangeRequest
-} from "../../../../modules/table-components-module/table/models/changeRequest/column-position-change.request";
-import {
-  ColumnSizeChangeRequest
-} from "../../../../modules/table-components-module/table/components/cell-resize/cell-resize.component";
+import {ColumnPositionChangeRequest} from "../../../../modules/table-components-module/table/models/changeRequest/column-position-change.request";
+import {ColumnSizeChangeRequest} from "../../../../modules/table-components-module/table/components/cell-resize/cell-resize.component";
 import {SortChangeRequest} from "../../../../modules/table-components-module/table/models/changeRequest/sort-change-request";
-import {
-  SelectionChangeRequest
-} from "../../../../modules/table-components-module/table/models/changeRequest/selectionChangeRequest";
+import {SelectionChangeRequest} from "../../../../modules/table-components-module/table/models/changeRequest/selectionChangeRequest";
 import {PageSizeChangeRequest} from "../../../../modules/table-components-module/table/models/changeRequest/pageSizeChangeRequest";
-import {
-  PageNumberChangeRequest
-} from "../../../../modules/table-components-module/table/models/changeRequest/pageNumberChangeRequest";
+import {PageNumberChangeRequest} from "../../../../modules/table-components-module/table/models/changeRequest/pageNumberChangeRequest";
 import {ListViewTableState} from "../../../../state/list-view-state/list-view-table-state";
-import {ListViewTableStateManagerImpl} from "../../../../state/list-view-state/list-view-table-state-manager-impl";
-import {PagingAndSortingRemoteRepositoryListViewStateManagerImpl} from "../../../../provider/paging-and-sorting-remote-repository-list-view-state-manager-impl";
+import {
+  PagingAndSortingRemoteRepositoryListViewStateManagerImpl
+} from "../../../../provider/paging-and-sorting-remote-repository-list-view-state-manager-impl";
 import {HasId} from "../../../../service/http/model/pageable";
-import {$e} from "@angular/compiler/src/chars";
 
 @Directive({
   selector: "app-list-view-component",

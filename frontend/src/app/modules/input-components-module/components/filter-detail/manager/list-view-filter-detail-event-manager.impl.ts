@@ -16,9 +16,6 @@ export class ListViewFilterDetailEventManagerImpl {
   }
 
   public onFilterDetailsEvent(event: FilterStateChangeRequest) {
-    console.group("onFilterDetailsEvent")
-    console.info(event)
-
     let listViewFilterState = this.listViewFiltersStateManager.getListViewFilterState();
     let filterValuesByAttributeKey = listViewFilterState.filterValuesByAttributeKey$.getValue();
     let changeableFilterState: FilterComponentValue<any, any, any> = {...filterValuesByAttributeKey[event.attributeKey]};
@@ -37,41 +34,32 @@ export class ListViewFilterDetailEventManagerImpl {
 
     let byAttributeKey: FilterValuesByAttributeKey<any> = {};
     byAttributeKey[event.attributeKey] = changeableFilterState;
-    let assign = Object.assign(filterValuesByAttributeKey, changeableFilterState);
+    let assign = Object.assign(filterValuesByAttributeKey, byAttributeKey);
 
     listViewFilterState.filterValuesByAttributeKey$.next(assign);
-
-    console.groupEnd()
   }
 
-  public onObjectStateDefineRequest(event: FilterStateChangeRequest, adaptedObjectPath: string, value: FilterComponentValue<any, any, any>): void {
-    console.info("onObjectStateDefineRequest")
-
+  public onObjectStateDefineRequest(event: FilterStateChangeRequest, changeRequestPath: string, changeableObject: FilterComponentValue<any, any, any>): void {
     let payload = event.payload;
     let typeFinderService = event.typeFinderService;
 
     if (typeFinderService.isArray(payload.subject.valueType)) {
-      // payload.owner.currentValue[payload.metaInf.key] = [];
+      objectPath.set(changeableObject, changeRequestPath, [])
     } else if (typeFinderService.isObject(payload.subject.valueType, event.typeGraph)) {
-      // payload.owner.currentValue[payload.metaInf.key] = {};
+      objectPath.set(changeableObject, changeRequestPath, {})
     } else if(typeFinderService.isString(payload.subject.valueType)) {
-      // payload.owner.currentValue[payload.metaInf.key] = '';
+      objectPath.set(changeableObject, changeRequestPath, '')
     } else if(typeFinderService.isNumber(payload.subject.valueType)) {
-      // payload.owner.currentValue[payload.metaInf.key] = 100;
+      objectPath.set(changeableObject, changeRequestPath, 0)
     }
   }
 
   public onObjectStateDeleteRequest(event: FilterStateChangeRequest, changeRequestPath: string, changeableObject: FilterComponentValue<any, any, any>): void {
-    console.info("onObjectStateDeleteRequest")
-
     let payload = event.payload;
     let typeFinderService = event.typeFinderService;
 
     if (typeFinderService.isObject(payload.owner.valueType, event.typeGraph)) {
-      // TODO: Удаление свойства
       objectPath.del(changeableObject, changeRequestPath);
-      console.log([changeableObject, changeRequestPath])
-      delete payload.owner.currentValue[payload.metaInf.key];
     }
 
     if (typeFinderService.isArray(payload.owner.valueType)) {
@@ -80,41 +68,35 @@ export class ListViewFilterDetailEventManagerImpl {
   }
 
   public onObjectStateChangeRequest(event: FilterStateChangeRequest, changeRequestPath: string, changeableObject: FilterComponentValue<any, any, any>): void {
-    console.info(["onObjectStateChangeRequest", event, changeRequestPath, changeableObject])
-
     let payload = event.payload;
     let typeFinderService = event.typeFinderService;
 
     if (payload.requestType == RequestType.DELETE_ALL_ARRAY_ITEMS) {
-      // if (payload.owner.currentValue[payload.metaInf.key] != null) {
-      //   payload.owner.currentValue[payload.metaInf.key] = [];
-      // }
+      if (payload.owner.currentValue[payload.metaInf.key] != null) {
+        objectPath.set(changeableObject, changeRequestPath, [])
+      }
     }
 
     if (payload.requestType == RequestType.ADD_ARRAY_ITEM) {
-      objectPath.push(changeableObject, changeRequestPath, new StringFilterComponentValueImpl());
-      // let newObject = objectPath.set(changeableObject, changeRequestPath, new StringFilterComponentValueImpl());
-
-      // if (typeFinderService.isArray(payload.subject.valueType)) {
-      //   // (payload.owner.currentValue as Array<any>).push([]);
-      // } else if (typeFinderService.isObject(payload.subject.valueType, event.typeGraph)) {
-      //   debugger
-      //
-      //   // (payload.owner.currentValue as Array<any>).push({});
-      // } else if (typeFinderService.isEnum(payload.subject.valueType)) {
-      //   // (payload.owner.currentValue as Array<any>).push(undefined);
-      // } else {
-      //   // (payload.owner.currentValue as Array<any>).push(undefined);
-      // }
+      if (typeFinderService.isArray(payload.subject.valueType)) {
+        objectPath.push(changeableObject, changeRequestPath, [])
+      } else if (typeFinderService.isObject(payload.subject.valueType, event.typeGraph)) {
+        objectPath.push(changeableObject, changeRequestPath, new StringFilterComponentValueImpl());
+      } else if (typeFinderService.isEnum(payload.subject.valueType)) {
+        (payload.owner.currentValue as Array<any>).push(undefined);
+      } else {
+        (payload.owner.currentValue as Array<any>).push(undefined);
+      }
     }
 
     if (payload.requestType == RequestType.CHANGE_OBJECT_PROPERTY_VALUE) {
-      // payload.owner.currentValue[payload.metaInf.key] = payload.subject.nextValue;
+      // TODO ?????
       objectPath.set(changeableObject, changeRequestPath, payload.subject.nextValue)
     }
 
     if (payload.requestType == RequestType.CHANGE_ARRAY_ITEM_VALUE) {
-      // payload.owner.currentValue[payload.metaInf.key] = payload.subject.nextValue;
+      // TODO ?????
+      objectPath.set(changeableObject, changeRequestPath, payload.subject.nextValue)
     }
   }
 

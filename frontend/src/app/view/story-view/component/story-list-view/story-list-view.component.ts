@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ListViewComponent} from "../../../view/component/list-view/list-view.component";
 
 @Component({

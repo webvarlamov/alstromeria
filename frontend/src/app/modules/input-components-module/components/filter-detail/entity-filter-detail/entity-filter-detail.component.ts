@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FilterDetailComponent } from "../common/filter-detail-component";
+import {Component, OnInit} from '@angular/core';
+import {FilterDetailComponent} from "../common/filter-detail-component";
 
 @Component({
   selector: 'app-entity-filter-detail',

@@ -1,4 +1,4 @@
-import { Range } from './range';
+import {Range} from './range';
 
 export class FilterExpression {
   public expressions?: FilterExpression[];

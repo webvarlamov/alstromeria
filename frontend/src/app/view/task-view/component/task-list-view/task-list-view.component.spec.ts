@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TaskListViewComponent } from './task-list-view.component';
+import {TaskListViewComponent} from './task-list-view.component';
 
 describe('TaskListViewComponent', () => {
   let component: TaskListViewComponent;

@@ -1,5 +1,5 @@
 import {FilterExpressionBuilder} from "./filter-expression-builder";
-import {Observable, of, throwError} from "rxjs";
+import {Observable, of} from "rxjs";
 import {FilterExpression, FilterExpressionOperator} from "../model/filter-expression";
 import {FilterValueConfigTuple} from "../../../state/filter-state/list-view-filters.state";
 import {Range} from "../model/range";

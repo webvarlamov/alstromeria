@@ -1,15 +1,13 @@
 import {ListViewTableState} from "./list-view-table-state";
 import {PagingAndSortingRepository} from "../../service/http/repository/paging-and-sorting-repository";
-import {combineLatest, of} from "rxjs";
 import {Page} from "../../service/http/model/page";
 import {TableSort} from "../../modules/table-components-module/table/models/dataModels/tableSort";
 import {ResponsePage} from "../../service/http/model/response-page";
 import {HasId} from "../../service/http/model/pageable";
-import {map, switchMap, take, tap} from "rxjs/operators";
+import {switchMap, take} from "rxjs/operators";
 import {FilterableListViewTableStateManager} from "./filterable-list-view-table-state-manager";
 import {ListViewFiltersStateManagerImpl} from "../filter-state/list-view-filters-state-manager-impl";
 import {FilterExpressionBuilder} from "../../service/http/service/filter-expression-builder";
-import {FilterExpression} from "../../service/http/model/filter-expression";
 
 export class RemoteFilterableListViewStateManager extends FilterableListViewTableStateManager {
   public repository: PagingAndSortingRepository<any>;

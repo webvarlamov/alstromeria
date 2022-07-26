@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, of} from "rxjs";
 import {delay, switchMap, take, tap} from "rxjs/operators";
 

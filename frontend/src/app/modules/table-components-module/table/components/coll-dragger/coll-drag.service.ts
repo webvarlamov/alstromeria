@@ -1,6 +1,5 @@
 import {ElementRef, Injectable} from '@angular/core';
 import {TableColumn} from "../../models/dataModels/tableColumn";
-import {of} from "rxjs";
 
 export class TableHeaderRowCellsPosition {
   id: string;

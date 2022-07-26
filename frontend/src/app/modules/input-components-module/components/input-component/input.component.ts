@@ -1,17 +1,7 @@
-import {
-  AfterViewInit,
-  ContentChild,
-  Directive,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import {AfterViewInit, ContentChild, Directive, EventEmitter, Input, OnInit, Output,} from '@angular/core';
 import {SuggestionOwner} from "./suggestions.directive";
-import {HasId} from "../../../../service/http/model/pageable";
 import {BehaviorSubject} from "rxjs";
 import {InputSuggestionComponent} from "../input-suggestion/input-suggestion.component";
-import {RangeOperator} from "../../../../service/http/model/range-operator.enum";
 
 export enum InputComponentType {
   BOOLEAN = 'boolean',

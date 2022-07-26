@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CrudToolbarComponent } from './crud-toolbar.component';
+import {CrudToolbarComponent} from './crud-toolbar.component';
 
 describe('CrudToolbarComponent', () => {
   let component: CrudToolbarComponent;

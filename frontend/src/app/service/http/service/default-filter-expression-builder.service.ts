@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {DefaultFilterExpressionBuilderImpl} from "./default-filter-expression-builder-impl";
 
 @Injectable({

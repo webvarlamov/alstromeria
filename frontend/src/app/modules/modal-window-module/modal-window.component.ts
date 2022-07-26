@@ -1,15 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostBinding,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild
-} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {fromEvent, merge, Observable, Subscription} from 'rxjs';
 import {filter, map, pairwise, switchMap, takeUntil, tap} from 'rxjs/operators';
 import {ModalWindowStateData} from "./model/modal-window-state.data";

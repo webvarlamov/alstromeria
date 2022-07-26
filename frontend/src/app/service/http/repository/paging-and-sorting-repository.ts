@@ -1,6 +1,6 @@
 import {CrudRepository} from "./crud-repository";
 import {Observable} from "rxjs";
-import {HasId, Pageable} from "../model/pageable";
+import {HasId} from "../model/pageable";
 import {Page} from "../model/page";
 import {FilterExpression} from "../model/filter-expression";
 import {TableSort} from "../../../modules/table-components-module/table/models/dataModels/tableSort";

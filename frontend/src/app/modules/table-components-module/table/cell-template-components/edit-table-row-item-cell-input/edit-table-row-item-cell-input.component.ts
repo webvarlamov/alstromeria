@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TableCellDynamicComponentImpl } from "../../models/common/table-cell-dynamic-component-impl";
+import {Component, OnInit} from '@angular/core';
+import {TableCellDynamicComponentImpl} from "../../models/common/table-cell-dynamic-component-impl";
 
 export class EditTableRowItemCellInputComponentEvent {
   previousValue: string;

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TaskExecutorListViewComponent } from './task-executor-list-view.component';
+import {TaskExecutorListViewComponent} from './task-executor-list-view.component';
 
 describe('TaskExecutorListViewComponent', () => {
   let component: TaskExecutorListViewComponent;

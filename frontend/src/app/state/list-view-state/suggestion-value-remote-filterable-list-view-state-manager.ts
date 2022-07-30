@@ -31,29 +31,29 @@ export class SuggestionValueRemoteFilterableListViewStateManager extends RemoteF
     return combineLatest([
       this.listViewTableState.tablePage$,
       this.listViewTableState.tableSorting$,
-      this.listViewFiltersStateManager.filtersByAttributeKey$.pipe(
-        switchMap(filtersByAttributeKey => {
-          return this.filterExpressionBuilder ?
-            this.filterExpressionBuilder.build(filtersByAttributeKey)
-            : of(FilterExpression.empty());
-        }),
-        take(1)
-      )
+      // this.listViewFiltersStateManager.filtersByAttributeKey$.pipe(
+      //   switchMap(filtersByAttributeKey => {
+      //     return this.filterExpressionBuilder ?
+      //       this.filterExpressionBuilder.build(filtersByAttributeKey)
+      //       : of(FilterExpression.empty());
+      //   }),
+      //   take(1)
+      // )
     ]).pipe(
       take(1),
-      switchMap(([page, sort, filterExpression]) => {
+      switchMap(([page, sort]) => {
         return this.repository.findAllSuggestionsOnPage({
           page: page,
           sort: sort,
           attributeKey: this.attributeKey,
-          filterExpression: filterExpression
+          // filterExpression: filterExpression
         })
       })
     ).toPromise();
   }
 
-  public onSuggestionOwnerValueChangeEvent(args: SuggestionOwnerInputEvent): void {
+  public onSuggestionInputValueChangeEvent(args: SuggestionOwnerInputEvent): void {
     const attributeKey = args.owner.config?.attributeKey;
-    this.listViewFiltersStateManager.updateValueByAttributeKey(attributeKey, args.value)
+    // this.listViewFiltersStateManager.updateValueByAttributeKey(attributeKey, args.value)
   }
 }

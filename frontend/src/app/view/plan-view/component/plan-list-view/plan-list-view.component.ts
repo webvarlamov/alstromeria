@@ -26,6 +26,10 @@ import {
   FilterComponentValueUnionOperator,
   StringFilterComponentRangeOperatorType
 } from "../../../../modules/filter-components-module/models/filter-component-value";
+import {
+  SuggestionValueRemoteFilterableListViewStateManager
+} from "../../../../state/list-view-state/suggestion-value-remote-filterable-list-view-state-manager";
+import {DefaultFilterExpressionBuilderImpl} from "../../../../service/http/service/default-filter-expression-builder-impl";
 
 @Component({
   selector: 'app-plan-list-view',
@@ -125,6 +129,27 @@ export class PlanListViewComponent extends ListViewComponent<any> implements OnI
     filterExpressionBuilder: new RemoteRepositoryDefaultFilterExpressionBuilderImpl()
   });
 
+  public nameFilterSuggestionStateManager: SuggestionValueRemoteFilterableListViewStateManager =
+    new SuggestionValueRemoteFilterableListViewStateManager({
+      listViewTableState: new ListViewTableState({
+        tablePage: {
+          page: 0,
+          size: 50,
+          pagesCount: 0,
+          itemsCount: 0,
+        },
+        tableColumns: [{
+          id: "value",
+          caption: "Значение",
+          dataField: "value"
+        }]
+      }),
+      repository: this.planRepository,
+      attributeKey: "name",
+      listViewFiltersStateManager: new ListViewFiltersStateManagerImpl({listViewFiltersState: new ListViewFiltersState()}),
+      filterExpressionBuilder: new DefaultFilterExpressionBuilderImpl()
+    });
+
   constructor(
     public injector: Injector,
     public planRepository: PlanRepository,
@@ -163,37 +188,6 @@ export class PlanListViewComponent extends ListViewComponent<any> implements OnI
 //
 // public booleanSuggestionStateManager: any = new BooleanInputListViewTableStateManager();
 //
-// public stringSuggestionStateManager: SuggestionValueRemoteFilterableListViewStateManager =
-//   new SuggestionValueRemoteFilterableListViewStateManager({
-//     listViewTableState: new ListViewTableState({
-//       tablePage: {
-//         page: 0,
-//         size: 50,
-//         pagesCount: 0,
-//         itemsCount: 0,
-//       },
-//       tableColumns: [{
-//         id: "value",
-//         caption: "Значение",
-//         dataField: "value"
-//       }]
-//     }),
-//     repository: this.planRepository,
-//     attributeKey: "name",
-//     listViewFiltersStateManager: new ListViewFiltersStateManager({
-//       listViewFiltersState: new ListViewFiltersState({
-//         listViewFilterConfigByAttributeKey: {
-//           name: new FilterComponentConfig<any>({
-//             attributeKey: "name",
-//             caption: "Имя",
-//             componentType: InputComponentType.STRING,
-//             operator: RangeOperator.STARTWITH
-//           })
-//         }
-//       })
-//     }),
-//     filterExpressionBuilder: new DefaultFilterExpressionBuilderImpl()
-//   });
 //
 // public numberSuggestionStateManager: SuggestionValueRemoteFilterableListViewStateManager =
 //   new SuggestionValueRemoteFilterableListViewStateManager({

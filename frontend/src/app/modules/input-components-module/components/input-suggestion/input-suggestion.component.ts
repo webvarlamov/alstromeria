@@ -22,7 +22,7 @@ export class InputSuggestionComponent implements OnInit {
   public owner: InputComponent<any, any>;
 
   @Input()
-  public stateManager: ListViewTableStateManagerImpl & SuggestionFilterableListViewStateManager;
+  public suggestionStateManager: ListViewTableStateManagerImpl & SuggestionFilterableListViewStateManager;
 
   @Input()
   public selectionConfig: TableSelectionConfig = {
@@ -37,19 +37,19 @@ export class InputSuggestionComponent implements OnInit {
   }
 
   public onColumnMoveChangeRequest($event: ColumnPositionChangeRequest) {
-    this.stateManager.changeTableColumns($event.candidates)
+    this.suggestionStateManager.changeTableColumns($event.candidates)
   }
 
   public onColumnSizeChangeRequest($event: ColumnSizeChangeRequest) {
-    this.stateManager.changeTableColumns($event.candidates)
+    this.suggestionStateManager.changeTableColumns($event.candidates)
   }
 
   public onSortChangeRequest($event: SortChangeRequest) {
-    this.stateManager.changeTableSorting($event.candidates)
+    this.suggestionStateManager.changeTableSorting($event.candidates)
   }
 
   public onTableSelectionChangeRequest($event: SelectionChangeRequest) {
-    this.stateManager.changeTableSelected($event.candidates)
+    this.suggestionStateManager.changeTableSelected($event.candidates)
     this.owner.onInputSuggestionEvent({
       type: InputSuggestionEventType.SELECTION_CHANGE,
       data: $event
@@ -57,11 +57,11 @@ export class InputSuggestionComponent implements OnInit {
   }
 
   public onPageSizeChangeRequest($event: PageSizeChangeRequest) {
-    this.stateManager.changeTablePage($event.candidate);
+    this.suggestionStateManager.changeTablePage($event.candidate);
   }
 
   public onPageNumberChangeRequest($event: PageNumberChangeRequest) {
-    this.stateManager.changeTablePage($event.candidate);
+    this.suggestionStateManager.changeTablePage($event.candidate);
   }
 
   public onTableRowClickEvent($event: TableRowClickEvent) {
@@ -71,8 +71,8 @@ export class InputSuggestionComponent implements OnInit {
     })
   }
 
-  public onOwnerInputValueChangeEvent(args: SuggestionOwnerInputEvent) {
-    this.stateManager.onSuggestionOwnerValueChangeEvent(args);
+  public onInputValueChangeEvent(args: SuggestionOwnerInputEvent) {
+    this.suggestionStateManager.onSuggestionInputValueChangeEvent(args);
     // this.stateManager.updateItems().then();
   }
 }

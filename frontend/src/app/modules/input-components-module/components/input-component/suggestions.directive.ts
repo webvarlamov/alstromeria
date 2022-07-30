@@ -4,7 +4,7 @@ import {TableRowClickEvent} from "../../../table-components-module/table/models/
 @Directive({
   selector: 'SuggestionOwner'
 })
-export abstract class SuggestionOwner {
+export abstract class SuggestionInput {
   public showSuggestions: boolean = false;
   public showSelectedPopover: boolean = false;
 

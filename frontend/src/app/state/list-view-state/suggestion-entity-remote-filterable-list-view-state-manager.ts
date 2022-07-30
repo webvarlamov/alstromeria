@@ -3,6 +3,6 @@ import {SuggestionFilterableListViewStateManager} from "./suggestion-filterable-
 import {SuggestionOwnerInputEvent} from "../../modules/input-components-module/components/input-component/input.component";
 
 export class SuggestionEntityRemoteFilterableListViewStateManager extends RemoteFilterableListViewStateManager implements SuggestionFilterableListViewStateManager{
-  onSuggestionOwnerValueChangeEvent(args: SuggestionOwnerInputEvent): void {
+  onSuggestionInputValueChangeEvent(args: SuggestionOwnerInputEvent): void {
   }
 }

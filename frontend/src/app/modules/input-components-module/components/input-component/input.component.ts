@@ -1,5 +1,5 @@
 import {AfterViewInit, ContentChild, Directive, EventEmitter, Input, OnInit, Output,} from '@angular/core';
-import {SuggestionOwner} from "./suggestions.directive";
+import {SuggestionInput} from "./suggestions.directive";
 import {BehaviorSubject} from "rxjs";
 import {InputSuggestionComponent} from "../input-suggestion/input-suggestion.component";
 
@@ -69,7 +69,7 @@ export interface SuggestionOwnerInputEvent {
 @Directive({
   selector: 'app-input-component-directive'
 })
-export abstract class InputComponent<C extends InputComponentConfigImpl<any>, V extends InputComponentValue> extends SuggestionOwner implements OnInit, AfterViewInit {
+export abstract class InputComponent<C extends InputComponentConfigImpl<any>, V extends InputComponentValue> extends SuggestionInput implements OnInit, AfterViewInit {
   public inputValue$: BehaviorSubject<string> = new BehaviorSubject<any>('');
   @ContentChild(InputSuggestionComponent)
   public suggestionComponent: InputSuggestionComponent;
@@ -93,7 +93,7 @@ export abstract class InputComponent<C extends InputComponentConfigImpl<any>, V 
 
   public onInputValueChange(value: string) {
     this.inputValue$.next(value);
-    this.suggestionComponent.onOwnerInputValueChangeEvent({
+    this.suggestionComponent.onInputValueChangeEvent({
       owner: this,
       value: value
     } as SuggestionOwnerInputEvent);

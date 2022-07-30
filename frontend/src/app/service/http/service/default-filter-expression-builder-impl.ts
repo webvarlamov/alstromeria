@@ -9,7 +9,8 @@ export class DefaultFilterExpressionBuilderImpl implements FilterExpressionBuild
 
   public build(filtersByAttributeKey: { [attributeKey: string]: FilterValueConfigTuple }): Observable<FilterExpression> {
     const ranges = Object.entries(filtersByAttributeKey).map(([attributeKey, entry]) => {
-      const operator: RangeOperator = entry.config?.operator;
+      // TODO
+      const operator: RangeOperator = RangeOperator.EQ
 
       if (operator == null) {
         console.error('Filter component config RangeOperator value is Null!', entry);
@@ -21,9 +22,14 @@ export class DefaultFilterExpressionBuilderImpl implements FilterExpressionBuild
           property: attributeKey,
         });
 
+        // TODO
+          // @ts-ignore
         if (operator == RangeOperator.ISMEMBER || operator == RangeOperator.IN) {
           range.values = entry.value as Array<string | number | null>;
+          // TODO
+          // @ts-ignore
         } else if (operator == RangeOperator.BT) {
+          // TODO
           /* TODO: ХЗ как обработать? */
         } else {
           range.value1 = entry.value as string | number | null;

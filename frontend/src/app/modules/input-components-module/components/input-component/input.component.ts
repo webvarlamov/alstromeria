@@ -99,10 +99,14 @@ export abstract class InputComponent<C extends InputComponentConfigImpl<any>, V 
     } as SuggestionOwnerInputEvent);
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     if (this.suggestionComponent != null) {
       this.suggestionComponent.owner = this;
     }
+  }
+
+  public setInputValue(string: string) {
+    this.inputValue$.next(string);
   }
 }
 

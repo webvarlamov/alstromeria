@@ -73,6 +73,6 @@ export class InputSuggestionComponent implements OnInit {
 
   public onInputValueChangeEvent(args: SuggestionOwnerInputEvent) {
     this.suggestionStateManager.onSuggestionInputValueChangeEvent(args);
-    // this.stateManager.updateItems().then();
+    this.suggestionStateManager.updateItems().then();
   }
 }

@@ -54,6 +54,6 @@ export class SuggestionValueRemoteFilterableListViewStateManager extends RemoteF
 
   public onSuggestionInputValueChangeEvent(args: SuggestionOwnerInputEvent): void {
     const attributeKey = args.owner.config?.attributeKey;
-    // this.listViewFiltersStateManager.updateValueByAttributeKey(attributeKey, args.value)
+    // this.listViewFiltersStateManager.setFilterValuesByAttributeKey(attributeKey, )
   }
 }

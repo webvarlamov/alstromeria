@@ -31,7 +31,6 @@ export class RemoteFilterableListViewStateManager extends FilterableListViewTabl
 
   public changeTablePage(page: Page): void {
     this.listViewTableState.nextTablePage(page);
-
     this.updateItems().then();
   }
 
@@ -41,6 +40,7 @@ export class RemoteFilterableListViewStateManager extends FilterableListViewTabl
     this.updateItems().then();
   }
 
+  // TODO Имплементация для ремоута
   public loadFromRemote(): Promise<ResponsePage<HasId>> {
     return null;
     // return combineLatest([

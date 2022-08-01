@@ -5,6 +5,7 @@ import {FilterValuesByAttributeKey} from "../../view/view/component/list-view/fi
 import {FilterConfigByAttributeKey} from "../../view/view/component/list-view/filter-config-by-attribute.key";
 import {FilterComponentValue} from "../../modules/filter-components-module/models/filter-component-value";
 import {FilterComponentConfig} from "../../view/view/component/list-view/filter-config.interface";
+import * as objectPath from "object-path";
 
 export interface ObjectOfMappedFilterStates {
   [key: string]: {
@@ -71,11 +72,18 @@ export class ListViewFiltersStateManagerImpl implements ListViewFiltersStateMana
   public getListViewFilterState(): ListViewFiltersState {
     return this.listViewFilterState;
   }
+
+  public setFilterValuesByAttributeKey(attributeKey: string, value: FilterValuesByAttributeKey<any>): void {
+    const currentValue = this.listViewFilterState.filterValuesByAttributeKey$.getValue();
+    let filterValuesByAttributeKey = objectPath.set(currentValue, attributeKey, value);
+    this.listViewFilterState.filterValuesByAttributeKey$.next(filterValuesByAttributeKey)
+  }
 }
 
 export interface ListViewFiltersStateManager {
   getListViewFiltersStateData(): Observable<ListViewFiltersStateData>;
   getListViewFilterState(): ListViewFiltersState;
+  setFilterValuesByAttributeKey(attributeKey: string, value: FilterValuesByAttributeKey<any>): void;
 }
 
 export interface ListViewFiltersStateData {

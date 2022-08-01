@@ -54,8 +54,15 @@ export class ListViewTableStateManagerImpl implements ListViewTableStateManager 
       })
     ).toPromise();
   }
+
+  // TODO: Базовая имплементация не должна ничего апдейтить, это удел ремоутов
+  public updateItems(): Promise<boolean> {
+    return Promise.resolve(false);
+  }
 }
 
+
+// 1 стейт менеджер
 export interface ListViewTableStateManager {
   changeTablePage(page: Page): void
   changeTableItems(tableItemsList: Array<HasId>): void
@@ -66,5 +73,7 @@ export interface ListViewTableStateManager {
 
   getPage(): Observable<Page>;
   getSorting(): Observable<TableSort[]>;
+
+  updateItems(): Promise<boolean>;
 }
 

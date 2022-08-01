@@ -3,3 +3,5 @@ import {FilterComponentValue} from "../../../../modules/filter-components-module
 export class FilterValuesByAttributeKey<T> {
     [attributeKey: string]: FilterComponentValue<any, any, any>
 }
+
+
